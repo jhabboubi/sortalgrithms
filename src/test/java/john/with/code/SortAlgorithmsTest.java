@@ -4,7 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -49,5 +52,21 @@ class SortAlgorithmsTest {
         assertArrayEquals(new Object[]{90, 20, 30, 40, 50, 60, 70, 80, 10}, arr);
     }
 
+    @Test
+    void factorial() {
+        List<Integer> expected = new ArrayList<>();
+        expected.add(0);
+        expected.add(1);
+        expected.add(2);
+        expected.add(6);
+        expected.add(24);
+        expected.add(120);
+        expected.add(720);
+        expected.add(5040);
+        expected.add(40320);
+        expected.add(362880);
+        expected.add(3628800);
 
+        assertArrayEquals(expected.toArray(),SortAlgorithms.factorialList(10).toArray());
+    }
 }
