@@ -3,6 +3,9 @@ package john.with.code;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,7 +56,7 @@ class AlgorithmsTest {
     }
 
     @Test
-    void factorial() {
+    void factorialList() {
         List<Integer> expected = new ArrayList<>();
         expected.add(0);
         expected.add(1);
@@ -68,6 +71,12 @@ class AlgorithmsTest {
         expected.add(3628800);
 
         assertArrayEquals(expected.toArray(), Algorithms.factorialList(10).toArray());
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1,1","2,2","3,6","4,24","5,120","6,720","7,5040","8,40320","9,362880","10,3628800"})
+    void factorial(int n,int expected) {
+        assertEquals(expected,Algorithms.factorial(n));
     }
 
     @Test

@@ -1,6 +1,7 @@
 package john.with.code;
 
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -98,22 +99,25 @@ public class Algorithms {
      * @return a list of integers
      */
 
-    public static List<Integer> factorialList(int toNumber) {
+    public static List<BigInteger> factorialList(long toNumber) {
 
-        List<Integer> list = new ArrayList<>();
+        List<BigInteger> list = new ArrayList<>();
         // added zero to match array list index with factorial number
-        list.add(0);
-        list.add(1);
-        // i = 4
-
+        list.add(new BigInteger("0"));
+        list.add(new BigInteger("1"));
         for (int i = 2; i <= toNumber; i++) {
-            int result = 1;
+            BigInteger result = BigInteger.valueOf(1);
             for (int j = i; j > 1; j--) {
-                result = result * j;
+                result = result.multiply(BigInteger.valueOf(j));
             }
-            list.add(result);
+            list.add(new BigInteger(String.valueOf(result)));
         }
         return list;
+    }
+
+    public static int factorial(int n){
+        if(n==0)return 1;
+        return n * factorial(n-1);
     }
 
     public static int gcd(int one, int two){
