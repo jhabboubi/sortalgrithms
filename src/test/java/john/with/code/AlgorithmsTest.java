@@ -5,15 +5,15 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 class AlgorithmsTest {
     Random r;
@@ -37,6 +37,7 @@ class AlgorithmsTest {
         Arrays.sort(arrCopy);
         Algorithms.quicksort(arr);
         assertArrayEquals(arrCopy, arr);
+        
     }
 
     @Test
@@ -57,20 +58,21 @@ class AlgorithmsTest {
 
     @Test
     void factorialList() {
-        List<Integer> expected = new ArrayList<>();
-        expected.add(0);
-        expected.add(1);
-        expected.add(2);
-        expected.add(6);
-        expected.add(24);
-        expected.add(120);
-        expected.add(720);
-        expected.add(5040);
-        expected.add(40320);
-        expected.add(362880);
-        expected.add(3628800);
+        List<BigInteger> expected = new ArrayList<>();
+        expected.add(BigInteger.valueOf(0));
+        expected.add(BigInteger.valueOf(1));
+        expected.add(BigInteger.valueOf(2));
+        expected.add(BigInteger.valueOf(6));
+        expected.add(BigInteger.valueOf(24));
+        expected.add(BigInteger.valueOf(120));
+        expected.add(BigInteger.valueOf(720));
+        expected.add(BigInteger.valueOf(5040));
+        expected.add(BigInteger.valueOf(40320));
+        expected.add(BigInteger.valueOf(362880));
+        expected.add(BigInteger.valueOf(3628800));
 
         assertArrayEquals(expected.toArray(), Algorithms.factorialList(10).toArray());
+
     }
 
     @ParameterizedTest
@@ -80,12 +82,21 @@ class AlgorithmsTest {
     }
 
     @Test
+    void factorialPositiveNumbersOnly() {
+        assertThrows(IllegalArgumentException.class, () -> Algorithms.factorial(-1));
+        assertThrows(IllegalArgumentException.class, () -> Algorithms.factorial(-10));
+
+    }
+
+    @Test
     void gcd() {
-        assertEquals(15,Algorithms.gcd(45,15));
+        //assertEquals(15,Algorithms.gcd(45,15));
         assertEquals(5,Algorithms.gcd(15,5));
         assertEquals(5,Algorithms.gcd(10,5));
         assertEquals(32,Algorithms.gcd(128,96));
         assertEquals(3,Algorithms.gcd(3768,1701));
+        int gcdFortyFiveAndFifteen = Algorithms.gcd(45, 15);
+        assertThat(gcdFortyFiveAndFifteen).isEqualTo(15);
 
     }
 }

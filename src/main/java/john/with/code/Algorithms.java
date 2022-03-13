@@ -72,7 +72,6 @@ public class Algorithms {
     // bubble sort - own implementation
     public static int[] bubbleSort(int[] arr) {
         int moves = 0;
-        // int loops = 0;
         do {
             moves = 0;
             for (int i = 0; i < arr.length - 1; i++) {
@@ -81,11 +80,6 @@ public class Algorithms {
                     moves += 1;
                 }
             }
-            // checks how many loops and moves made in one while loops
-            /*
-                loops++;
-                System.out.println(loops+ ": "+moves);
-             */
         } while (moves > 0);
 
         return arr;
@@ -116,6 +110,8 @@ public class Algorithms {
     }
 
     public static int factorial(int n){
+        if(n < 0)
+            throw new IllegalArgumentException("Positive Numbers Only");
         if(n==0)return 1;
         return n * factorial(n-1);
     }
