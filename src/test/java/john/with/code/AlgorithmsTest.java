@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,18 +58,18 @@ class AlgorithmsTest {
 
     @Test
     void factorialList() {
-        List<Integer> expected = new ArrayList<>();
-        expected.add(0);
-        expected.add(1);
-        expected.add(2);
-        expected.add(6);
-        expected.add(24);
-        expected.add(120);
-        expected.add(720);
-        expected.add(5040);
-        expected.add(40320);
-        expected.add(362880);
-        expected.add(3628800);
+        List<BigInteger> expected = new ArrayList<>();
+        expected.add(BigInteger.valueOf(0));
+        expected.add(BigInteger.valueOf(1));
+        expected.add(BigInteger.valueOf(2));
+        expected.add(BigInteger.valueOf(6));
+        expected.add(BigInteger.valueOf(24));
+        expected.add(BigInteger.valueOf(120));
+        expected.add(BigInteger.valueOf(720));
+        expected.add(BigInteger.valueOf(5040));
+        expected.add(BigInteger.valueOf(40320));
+        expected.add(BigInteger.valueOf(362880));
+        expected.add(BigInteger.valueOf(3628800));
 
         assertArrayEquals(expected.toArray(), Algorithms.factorialList(10).toArray());
     }
